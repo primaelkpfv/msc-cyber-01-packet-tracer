@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+<rect width="1440" height="900" fill="#f8fafc"/>
+<text x="720.0" y="40" font-size="20" fill="#1e293b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="700">Exercice 01 — miniLab : topologie réseau (La Plateforme MSc Cyber)</text>
+<ellipse cx="720.0" cy="95" rx="90" ry="34" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+<text x="720.0" y="100" font-size="16" fill="#1e293b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="700">Internet</text>
+<rect x="610.0" y="175" width="220" height="52" rx="7" fill="#334155" stroke="#0f172a" stroke-width="1.5"/><text x="720.0" y="199.0" font-size="15" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">R-LaPlateforme</text><text x="720.0" y="214.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">Cisco 1941 · DHCP · NAT · inter-VLAN</text>
+<line x1="720.0" y1="129" x2="720.0" y2="175" stroke="#94a3b8" stroke-width="2.5"/>
+<text x="772.0" y="158" font-size="10" fill="#475569" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">G0/1 · WAN</text>
+<rect x="175" y="300" width="170" height="48" rx="7" fill="#334155" stroke="#0f172a" stroke-width="1.5"/><text x="260.0" y="322.0" font-size="14" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">SW-Bureau1</text><text x="260.0" y="337.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">Switch PT</text>
+<rect x="635" y="300" width="170" height="48" rx="7" fill="#334155" stroke="#0f172a" stroke-width="1.5"/><text x="720.0" y="322.0" font-size="14" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">SW-Bureau2</text><text x="720.0" y="337.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">Switch PT</text>
+<rect x="1095" y="300" width="170" height="48" rx="7" fill="#334155" stroke="#0f172a" stroke-width="1.5"/><text x="1180.0" y="322.0" font-size="14" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">SW-Bureau3</text><text x="1180.0" y="337.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">Switch PT</text>
+<line x1="720.0" y1="227" x2="260" y2="300" stroke="#e02f5b" stroke-width="3"/>
+<text x="450.0" y="262" font-size="10" fill="#e02f5b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">TRUNK · G0/0 → Fa0/1</text>
+<line x1="345" y1="324" x2="635" y2="324" stroke="#e02f5b" stroke-width="3"/>
+<text x="490.0" y="316" font-size="10" fill="#e02f5b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">TRUNK · Fa0/9 → Fa0/1</text>
+<line x1="805" y1="324" x2="1095" y2="324" stroke="#e02f5b" stroke-width="3"/>
+<text x="950.0" y="316" font-size="10" fill="#e02f5b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">TRUNK · Fa0/9 → Fa0/1</text>
+<line x1="260" y1="348" x2="198.0" y2="440" stroke="#3b82f6" stroke-width="2"/>
+<text x="198.0" y="436" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/6</text>
+<line x1="260" y1="348" x2="322.0" y2="440" stroke="#3b82f6" stroke-width="2"/>
+<text x="322.0" y="436" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/7</text>
+<line x1="260" y1="348" x2="198.0" y2="520" stroke="#7c86a8" stroke-width="2"/>
+<text x="198.0" y="516" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/2</text>
+<line x1="260" y1="348" x2="322.0" y2="520" stroke="#22a06b" stroke-width="2"/>
+<text x="322.0" y="516" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/4</text>
+<rect x="150" y="440" width="96" height="40" rx="7" fill="#3b82f6" stroke="#0f172a" stroke-width="1.5"/><text x="198.0" y="458.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">PC fixe</text><text x="198.0" y="473.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 10</text>
+<rect x="274" y="440" width="96" height="40" rx="7" fill="#3b82f6" stroke="#0f172a" stroke-width="1.5"/><text x="322.0" y="458.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">PC fixe</text><text x="322.0" y="473.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 10</text>
+<rect x="150" y="520" width="96" height="40" rx="7" fill="#7c86a8" stroke="#0f172a" stroke-width="1.5"/><text x="198.0" y="538.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">Tél. IP 7960</text><text x="198.0" y="553.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 1</text>
+<rect x="274" y="520" width="96" height="40" rx="7" fill="#22a06b" stroke="#0f172a" stroke-width="1.5"/><text x="322.0" y="538.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">AP Wi-Fi</text><text x="322.0" y="553.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 20</text>
+<line x1="322.0" y1="560" x2="322.0" y2="600" stroke="#22a06b" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="356.0" y="580.0" font-size="8" fill="#22a06b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Wi-Fi</text>
+<rect x="274" y="600" width="96" height="40" rx="7" fill="#22a06b" stroke="#0f172a" stroke-width="1.5"/><text x="322.0" y="618.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">Portable</text><text x="322.0" y="633.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 20</text>
+<line x1="720" y1="348" x2="658.0" y2="440" stroke="#3b82f6" stroke-width="2"/>
+<text x="658.0" y="436" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/6</text>
+<line x1="720" y1="348" x2="782.0" y2="440" stroke="#3b82f6" stroke-width="2"/>
+<text x="782.0" y="436" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/7</text>
+<line x1="720" y1="348" x2="658.0" y2="520" stroke="#7c86a8" stroke-width="2"/>
+<text x="658.0" y="516" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/2</text>
+<line x1="720" y1="348" x2="782.0" y2="520" stroke="#22a06b" stroke-width="2"/>
+<text x="782.0" y="516" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/4</text>
+<rect x="610" y="440" width="96" height="40" rx="7" fill="#3b82f6" stroke="#0f172a" stroke-width="1.5"/><text x="658.0" y="458.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">PC fixe</text><text x="658.0" y="473.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 10</text>
+<rect x="734" y="440" width="96" height="40" rx="7" fill="#3b82f6" stroke="#0f172a" stroke-width="1.5"/><text x="782.0" y="458.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">PC fixe</text><text x="782.0" y="473.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 10</text>
+<rect x="610" y="520" width="96" height="40" rx="7" fill="#7c86a8" stroke="#0f172a" stroke-width="1.5"/><text x="658.0" y="538.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">Tél. IP 7960</text><text x="658.0" y="553.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 1</text>
+<rect x="734" y="520" width="96" height="40" rx="7" fill="#22a06b" stroke="#0f172a" stroke-width="1.5"/><text x="782.0" y="538.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">AP Wi-Fi</text><text x="782.0" y="553.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 20</text>
+<line x1="782.0" y1="560" x2="782.0" y2="600" stroke="#22a06b" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="816.0" y="580.0" font-size="8" fill="#22a06b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Wi-Fi</text>
+<rect x="734" y="600" width="96" height="40" rx="7" fill="#22a06b" stroke="#0f172a" stroke-width="1.5"/><text x="782.0" y="618.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">Portable</text><text x="782.0" y="633.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 20</text>
+<line x1="1180" y1="348" x2="1118.0" y2="440" stroke="#3b82f6" stroke-width="2"/>
+<text x="1118.0" y="436" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/6</text>
+<line x1="1180" y1="348" x2="1242.0" y2="440" stroke="#3b82f6" stroke-width="2"/>
+<text x="1242.0" y="436" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/7</text>
+<line x1="1180" y1="348" x2="1118.0" y2="520" stroke="#7c86a8" stroke-width="2"/>
+<text x="1118.0" y="516" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/2</text>
+<line x1="1180" y1="348" x2="1242.0" y2="520" stroke="#22a06b" stroke-width="2"/>
+<text x="1242.0" y="516" font-size="8" fill="#64748b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Fa0/4</text>
+<rect x="1070" y="440" width="96" height="40" rx="7" fill="#3b82f6" stroke="#0f172a" stroke-width="1.5"/><text x="1118.0" y="458.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">PC fixe</text><text x="1118.0" y="473.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 10</text>
+<rect x="1194" y="440" width="96" height="40" rx="7" fill="#3b82f6" stroke="#0f172a" stroke-width="1.5"/><text x="1242.0" y="458.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">PC fixe</text><text x="1242.0" y="473.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 10</text>
+<rect x="1070" y="520" width="96" height="40" rx="7" fill="#7c86a8" stroke="#0f172a" stroke-width="1.5"/><text x="1118.0" y="538.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">Tél. IP 7960</text><text x="1118.0" y="553.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 1</text>
+<rect x="1194" y="520" width="96" height="40" rx="7" fill="#22a06b" stroke="#0f172a" stroke-width="1.5"/><text x="1242.0" y="538.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">AP Wi-Fi</text><text x="1242.0" y="553.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 20</text>
+<line x1="1242.0" y1="560" x2="1242.0" y2="600" stroke="#22a06b" stroke-width="2" stroke-dasharray="5,4"/>
+<text x="1276.0" y="580.0" font-size="8" fill="#22a06b" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="400">Wi-Fi</text>
+<rect x="1194" y="600" width="96" height="40" rx="7" fill="#22a06b" stroke="#0f172a" stroke-width="1.5"/><text x="1242.0" y="618.0" font-size="11" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600">Portable</text><text x="1242.0" y="633.0" font-size="10" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">VLAN 20</text>
+<rect x="40" y="700" width="360" height="168" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><text x="220.0" y="788.3333333333334" font-size="13" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600"></text>
+<text x="56" y="726" font-size="14" fill="#1e293b" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="700">Plan VLAN / adressage</text>
+<rect x="56" y="737" width="16" height="16" rx="3" fill="#7c86a8"/>
+<text x="82" y="749" font-size="12" fill="#1e293b" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="600">VLAN 1  · VoIP</text>
+<text x="240" y="749" font-size="11" fill="#475569" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">192.168.0.0/24  · ports 2-3</text>
+<rect x="56" y="766" width="16" height="16" rx="3" fill="#3b82f6"/>
+<text x="82" y="778" font-size="12" fill="#1e293b" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="600">VLAN 10 · PC fixes</text>
+<text x="240" y="778" font-size="11" fill="#475569" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">192.168.10.0/24 · ports 6-7</text>
+<rect x="56" y="795" width="16" height="16" rx="3" fill="#22a06b"/>
+<text x="82" y="807" font-size="12" fill="#1e293b" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="600">VLAN 20 · Wi-Fi</text>
+<text x="240" y="807" font-size="11" fill="#475569" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">192.168.20.0/24 · ports 4-5</text>
+<rect x="56" y="824" width="16" height="16" rx="3" fill="#d19a00"/>
+<text x="82" y="836" font-size="12" fill="#1e293b" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="600">VLAN 30 · Admin.</text>
+<text x="240" y="836" font-size="11" fill="#475569" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">192.168.30.0/24 · port 8</text>
+<rect x="970" y="700" width="430" height="168" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/><text x="1185.0" y="788.3333333333334" font-size="13" fill="#ffffff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-weight="600"></text>
+<text x="986" y="726" font-size="14" fill="#9a3412" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="700">Notes de conception</text>
+<text x="986" y="750" font-size="11" fill="#7c2d12" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">• Router-on-a-stick : 1 trunk G0/0 + sous-interfaces .1/.10/.20/.30</text>
+<text x="986" y="770" font-size="11" fill="#7c2d12" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">• 3 switchs en cascade (daisy-chain) via ports 1 et 9 (trunk)</text>
+<text x="986" y="790" font-size="11" fill="#7c2d12" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">• DHCP + NAT/PAT assurés par le routeur 1941</text>
+<text x="986" y="810" font-size="11" fill="#7c2d12" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">• Portables = clients Wi-Fi de l'AP → adressés en VLAN 20</text>
+<text x="986" y="830" font-size="11" fill="#7c2d12" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">• Piège du sujet levé : VLAN 10=PC fixes / VLAN 20=Wi-Fi</text>
+<text x="986" y="850" font-size="11" fill="#7c2d12" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-weight="400">  (tableau d'adressage retenu comme source de vérité)</text>
+</svg>

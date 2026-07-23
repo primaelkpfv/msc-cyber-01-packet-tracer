@@ -1,0 +1,72 @@
+! =====================================================================
+!  SWITCH SW-Bureau3  (Bureau 3)
+!  Rôle : commutation d'accès + trunks 802.1Q vers le reste du réseau.
+!  Chaque bureau : 2 PC fixes (VLAN10), 1 AP Wi-Fi (VLAN20),
+!                  1 téléphone IP (VLAN1/VoIP), 1 portable (via Wi-Fi -> VLAN20).
+! =====================================================================
+!  Affectation des ports (identique sur les 3 switchs) :
+!   Port 8      Administration            VLAN 30 (access)
+!   Ports 6-7   PC fixes                  VLAN 10 (access)
+!   Ports 4-5   Points d'accès Wi-Fi      VLAN 20 (access)
+!   Ports 2-3   Téléphones IP (VoIP)      VLAN 1  (access)
+!   Ports 1,9   Uplink (trunk 802.1Q)     TRUNK
+! =====================================================================
+
+enable
+configure terminal
+!
+hostname SW-Bureau3
+!
+no ip domain-lookup
+!
+! ---------- Création des VLAN (VLAN 1 existe par défaut) ----------
+vlan 10
+ name PC-Fixes
+vlan 20
+ name WiFi
+vlan 30
+ name Administration
+exit
+!
+! ---------- Port 8 : Administration (VLAN 30) ----------
+interface FastEthernet0/8
+ description Administration
+ switchport mode access
+ switchport access vlan 30
+!
+! ---------- Ports 6-7 : PC fixes (VLAN 10) ----------
+interface range FastEthernet0/6 - 7
+ description PC fixes
+ switchport mode access
+ switchport access vlan 10
+!
+! ---------- Ports 4-5 : Points d'accès Wi-Fi (VLAN 20) ----------
+interface range FastEthernet0/4 - 5
+ description Points d'acces Wi-Fi
+ switchport mode access
+ switchport access vlan 20
+!
+! ---------- Ports 2-3 : Téléphones IP / VoIP (VLAN 1) ----------
+interface range FastEthernet0/2 - 3
+ description Telephones IP (VoIP)
+ switchport mode access
+ switchport access vlan 1
+!
+! ---------- Ports 1 et 9 : Uplink trunk 802.1Q ----------
+interface range FastEthernet0/1, FastEthernet0/9
+ description Uplink TRUNK
+ switchport mode trunk
+!
+! ---------- SVI d'administration (management dans le VLAN 30) ----------
+interface Vlan30
+ description Management
+ ip address 192.168.30.4 255.255.255.0
+ no shutdown
+!
+ip default-gateway 192.168.30.1
+!
+! ---------- Sécurité d'accès minimale ----------
+enable secret Cisco_2025!
+!
+end
+write memory
