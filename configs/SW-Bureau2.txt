@@ -21,11 +21,11 @@ no ip domain-lookup
 !
 ! ---------- Création des VLAN (VLAN 1 existe par défaut) ----------
 vlan 10
- name PC-Fixes
+ name PC_FIXES
 vlan 20
- name WiFi
+ name WIFI
 vlan 30
- name Administration
+ name ADMINISTRATION
 exit
 !
 ! ---------- Port 8 : Administration (VLAN 30) ----------

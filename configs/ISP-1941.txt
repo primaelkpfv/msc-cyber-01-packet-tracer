@@ -1,0 +1,28 @@
+! =====================================================================
+!  ROUTEUR Cisco 1941 - ISP
+!  Rôle : simule Internet. C'est la cible des tests de connectivité
+!         sortante (ping 8.8.8.8) et le point de sortie du NAT de R1.
+! =====================================================================
+!  Liaison : ISP G0/0  <-->  R1-GATEWAY G0/1
+!            8.8.8.8/24        8.8.8.1/24
+!
+!  Aucune route de retour n'est nécessaire : le NAT/PAT de R1 traduit
+!  tout le LAN vers 8.8.8.1, qui est directement connecté à l'ISP.
+! =====================================================================
+
+enable
+configure terminal
+!
+hostname ISP
+!
+no ip domain-lookup
+!
+interface GigabitEthernet0/0
+ description Vers R1-GATEWAY (client)
+ ip address 8.8.8.8 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+end
+write memory

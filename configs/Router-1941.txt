@@ -1,5 +1,5 @@
 ! =====================================================================
-!  ROUTEUR Cisco 1941 - R-LaPlateforme
+!  ROUTEUR Cisco 1941 - R1-GATEWAY
 !  Rôle : passerelle Internet (NAT/PAT), routage inter-VLAN
 !         (router-on-a-stick) et serveur DHCP pour les 4 VLAN.
 ! =====================================================================
@@ -13,7 +13,7 @@
 enable
 configure terminal
 !
-hostname R-LaPlateforme
+hostname R1-GATEWAY
 !
 no ip domain-lookup
 ip domain-name laplateforme.io
@@ -89,8 +89,9 @@ interface GigabitEthernet0/0.30
  ip nat inside
 !
 ! ---------------------------------------------------------------------
-!  Interface WAN (G0/1) vers Internet - adresse fournie par le FAI (DHCP)
-!  Une route par défaut est installée automatiquement via DHCP.
+!  Interface WAN (G0/1) vers Internet
+!  Le "monde Internet" du lab est un routeur 1941 nomme ISP, adresse
+!  8.8.8.8/24, relie directement a G0/1 (cf. configs/ISP-1941.txt).
 ! ---------------------------------------------------------------------
 interface GigabitEthernet0/1
  description Uplink Internet (WAN)
@@ -100,8 +101,10 @@ interface GigabitEthernet0/1
  speed auto
  no shutdown
 !
-! Dans le lab, le "monde Internet" est represente par un serveur 8.8.8.8/24
-! directement relie a G0/1 (fait aussi office de DNS). Pour un vrai FAI en DHCP :
+! Route par defaut vers l'ISP
+ip route 0.0.0.0 0.0.0.0 8.8.8.8
+!
+! Variante pour un vrai FAI qui distribue l'adresse en DHCP :
 ! interface GigabitEthernet0/1
 !  ip address dhcp
 !  ip nat outside

@@ -7,7 +7,8 @@ inter-VLAN, DHCP centralisé et accès Internet (NAT), à réaliser dans Cisco P
 
 | Équipement | Quantité | Rôle |
 |------------|----------|------|
-| Routeur Cisco 1941 | 1 | Passerelle Internet (NAT), routage inter-VLAN, serveur DHCP |
+| Routeur Cisco 1941 | 1 | `R1-GATEWAY` — passerelle Internet (NAT), routage inter-VLAN, serveur DHCP |
+| Routeur Cisco 1941 | 1 | `ISP` — simule Internet (`8.8.8.8/24`), cible des tests sortants |
 | Switch PT | 3 | Commutation d'accès (1 par bureau) |
 | Point d'accès Wi-Fi PT-AC | 3 | Wi-Fi (1 par bureau) |
 | PC portables | 3 | Clients Wi-Fi (1 par bureau) |
@@ -52,11 +53,11 @@ Les VLAN 1 (VoIP) et 30 (Administration) sont, eux, cohérents dans les deux tab
 **Câblage (daisy-chain des switchs via les ports trunk 1 et 9) :**
 
 ```
-Internet ── (G0/1 WAN) R-LaPlateforme (G0/0 trunk)
-                              │
-                          Fa0/1 (trunk)
-                              │
-   SW-Bureau1 ──Fa0/9──Fa0/1── SW-Bureau2 ──Fa0/9──Fa0/1── SW-Bureau3
+ISP (8.8.8.8/24) ── (G0/1 WAN, 8.8.8.1/24) R1-GATEWAY (G0/0 trunk)
+                                                 │
+                                             Fa0/1 (trunk)
+                                                 │
+      SW-Bureau1 ──Fa0/9──Fa0/1── SW-Bureau2 ──Fa0/9──Fa0/1── SW-Bureau3
 ```
 
 Le routeur ne possède que 2 interfaces Gigabit : **G0/0** porte le trunk LAN
@@ -80,10 +81,12 @@ Les 3 switchs sont donc chaînés entre eux par leurs ports d'uplink (1 et 9).
    - affecter les ports d'accès (2-3 → VLAN 1, 4-5 → VLAN 20, 6-7 → VLAN 10, 8 → VLAN 30) ;
    - passer les ports 1 et 9 en **trunk** ;
    - configurer une **SVI VLAN 30** pour l'administration distante du switch.
-3. **Routeur** (`configs/Router-1941.txt`) :
+3. **Routeur R1-GATEWAY** (`configs/Router-1941.txt`) :
    - sous-interfaces 802.1Q sur G0/0 (`.1` native, `.10`, `.20`, `.30`) = **routage inter-VLAN** ;
    - **4 pools DHCP** (un par VLAN) + exclusions pour respecter la plage .10–.50 ;
-   - **G0/1** en sortie Internet + **NAT/PAT** (`ip nat inside/outside` + `access-list` + overload).
+   - **G0/1** en sortie Internet + **NAT/PAT** (`ip nat inside/outside` + `access-list` + overload)
+     + route par défaut vers l'ISP.
+   - **Routeur ISP** (`configs/ISP-1941.txt`) : `8.8.8.8/24`, il matérialise Internet.
 4. **Configurer les AP** (SSID) et associer les portables au Wi-Fi.
 5. **Tester** (voir ci-dessous).
 
@@ -104,19 +107,51 @@ show interfaces trunk
 show ip nat translations
 ```
 
-Connectivité à valider :
-- [ ] Chaque PC/téléphone/portable obtient une IP DHCP dans le bon VLAN (.10–.50).
-- [ ] **Ping inter-VLAN** : un PC fixe (VLAN 10) joint un portable Wi-Fi (VLAN 20), un téléphone (VLAN 1), etc.
-- [ ] **Ping inter-bureaux** : un PC du bureau 1 joint un PC du bureau 3.
-- [ ] **Accès Internet** : ping depuis un PC vers une adresse publique (ex. 8.8.8.8) → NAT OK.
+Connectivité validée :
+- [x] Chaque PC / téléphone / portable obtient une IP DHCP dans le bon VLAN, dans la plage .10–.50.
+- [x] **Ping inter-VLAN** : un PC fixe (VLAN 10) joint un portable Wi-Fi (VLAN 20).
+- [x] **Accès Internet** : `ping 8.8.8.8` depuis un PC → 4/4, 0 % de perte (NAT/PAT actif).
+- [x] **VLAN et trunks** : les 4 VLAN portent les bons ports d'accès, les ports 1 et 9 sont en trunk.
 
-## Livrables (à mettre sur GitHub)
+## Résultats obtenus
 
-- [x] `README.md` — ce fichier (process + décisions)
-- [x] `configs/` — export des configurations (routeur + 3 switchs)
+**DHCP** — 12 baux distribués par le routeur, tous dans la plage imposée `.10 – .50` :
+
+| VLAN | Réseau | Baux attribués |
+|------|--------|----------------|
+| 1 (VoIP) | 192.168.0.0/24 | `.10`, `.11`, `.12` — les 3 téléphones IP |
+| 10 (PC fixes) | 192.168.10.0/24 | `.10` → `.15` — les 6 PC fixes |
+| 20 (Wi-Fi) | 192.168.20.0/24 | `.10`, `.11`, `.12` — les 3 portables, associés en Wi-Fi |
+
+**Routage inter-VLAN** — depuis un PC du VLAN 10 (`192.168.10.10`) vers un portable Wi-Fi
+du VLAN 20 (`192.168.20.10`) : réponse avec `TTL=127`, soit un saut de routeur, ce qui confirme
+que le trafic passe bien par les sous-interfaces 802.1Q du 1941.
+
+**NAT/PAT** — après un `ping 8.8.8.8`, la table de traduction montre les sessions ICMP
+translatées de `192.168.10.10` vers l'adresse publique du WAN `8.8.8.1`.
+
+## Captures d'écran
+
+Toutes les captures sont dans le dossier [`screenshots/`](./screenshots).
+
+| # | Capture | Fichier |
+|---|---------|---------|
+| 1 | Topologie complète, tous les liens actifs | `01-topologie.jpg` |
+| 2 | `show vlan brief` sur SW-Bureau1 — les 4 VLAN et leurs ports | `02-vlan-brief-sw-bureau1.jpg` |
+| 3 | `ipconfig` sur un PC fixe — bail DHCP en 192.168.10.10 | `03-ipconfig-pc-vlan10.jpg` |
+| 4 | Ping inter-VLAN : VLAN 10 → VLAN 20 (Wi-Fi) | `04-ping-inter-vlan.jpg` |
+| 5 | Ping 8.8.8.8 — accès Internet, 4/4 | `05-ping-internet-8888.jpg` |
+| 6 | `show ip dhcp binding` — les 12 baux distribués | `06-dhcp-binding.jpg` |
+| 7 | `show ip nat translations` — traductions NAT/PAT actives | `07-nat-translations.jpg` |
+
+![Topologie complète](./screenshots/01-topologie.jpg)
+![VLAN sur SW-Bureau1](./screenshots/02-vlan-brief-sw-bureau1.jpg)
+![Ping Internet](./screenshots/05-ping-internet-8888.jpg)
+![Baux DHCP](./screenshots/06-dhcp-binding.jpg)
+
+## Livrables (sur GitHub)
+
+- [x] `README.md` — ce fichier (process + décisions + résultats)
+- [x] `configs/` — export des configurations (R1-GATEWAY + ISP + 3 switchs)
 - [x] `topologie.png` — schéma de la topologie
-- [ ] `LaPlateforme-miniLab.pkt` — **le fichier Packet Tracer** (à construire dans le GUI en collant les configs)
-- [ ] `screenshots/` — captures du lab qui fonctionne (VLAN, DHCP binding, ping inter-VLAN, accès Internet)
-
-> Montage du fichier `.pkt` : coller les configurations de [`configs/`](./configs) dans
-> chaque équipement, puis capturer les tests de validation ci-dessus.
+- [x] `screenshots/` — captures du lab en fonctionnement (VLAN, DHCP, ping inter-VLAN, Internet, NAT)
