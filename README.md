@@ -154,4 +154,9 @@ Toutes les captures sont dans le dossier [`screenshots/`](./screenshots).
 - [x] `README.md` — ce fichier (process + décisions + résultats)
 - [x] `configs/` — export des configurations (R1-GATEWAY + ISP + 3 switchs)
 - [x] `topologie.png` — schéma de la topologie
+- [x] `LaPlateforme-miniLab.pkt` — **le fichier Packet Tracer** du lab, prêt à ouvrir
 - [x] `screenshots/` — captures du lab en fonctionnement (VLAN, DHCP, ping inter-VLAN, Internet, NAT)
+
+> Le fichier `LaPlateforme-miniLab.pkt` s'ouvre avec **Cisco Packet Tracer 8 ou plus récent**.
+> Tous les équipements y sont déjà configurés : il suffit de l'ouvrir et de relancer les tests
+> de validation listés plus haut.
